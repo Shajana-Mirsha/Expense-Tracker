@@ -7,7 +7,7 @@ function handleOtherCategory() {
   const categorySelect = document.getElementById("category");
   const otherInput = document.getElementById("otherText");
 
-  const selected = categorySelect.value.trim(); // 🔥 TRIM
+  const selected = categorySelect.value.trim(); 
 
   if (selected.toLowerCase() === "others") {
     otherInput.style.display = "block";
@@ -41,7 +41,7 @@ function capturePhoto() {
   canvas.height = video.videoHeight;
   ctx.drawImage(video, 0, 0);
 
-  capturedImage = canvas.toDataURL("image/png"); // ✅ image locked to next expense
+  capturedImage = canvas.toDataURL("image/png"); 
   closeCamera();
 }
 
@@ -76,7 +76,7 @@ function addExpense() {
     amount,
     category,
     desc,
-    date,          // ✅ SAVE DATE
+    date,          
     image: capturedImage
   });
 
@@ -117,7 +117,7 @@ function render() {
   const filterDate = document.getElementById("filterDate").value;
 
   expenses
-    .filter(e => !filterDate || e.date === filterDate) // ✅ HISTORY FILTER
+    .filter(e => !filterDate || e.date === filterDate) //  HISTORY FILTER
     .forEach((e, i) => {
       total += e.amount;
 
@@ -174,7 +174,7 @@ function updateBackgroundByCategory(category) {
   const bg = document.querySelector(".background");
   if (!bg) return;
 
-  // 🔥 NORMALIZE INPUT (THIS IS THE FIX)
+  // NORMALIZE INPUT (THIS IS THE FIX)
   const key = category.trim().toLowerCase();
 
   let url;
