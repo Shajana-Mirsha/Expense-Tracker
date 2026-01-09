@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Background -->
+<div class="background"></div>
+
+<!-- App Container -->
+<div class="app-container">
+
+  <h1>Expense Tracker</h1>
+
+  <div class="form">
+  <input type="number" id="amount" placeholder="Amount (₹)">
+
+  <select id="category" onchange="handleOtherCategory()">
+    <option value="food">Food</option>
+    <option value="travel">Travel</option>
+    <option value="shopping">Shopping</option>
+    <option value="others">Others</option>
+  </select>
+
+  <input type="text" id="otherText" placeholder="Specify category" style="display:none;">
+  <input type="text" id="desc" placeholder="Description">
+
+  <!-- ✅ NEW: DATE -->
+  <input type="date" id="date">
+
+  <button onclick="openCamera()">Open Camera</button>
+  <button onclick="addExpense()">Add Expense</button>
+</div>
+
+<!-- ✅ HISTORY FILTER -->
+<div class="summary">
+  View History:
+  <input type="date" id="filterDate" onchange="render()">
+</div>
+
+
+  <!-- Camera Modal -->
+  <div id="cameraModal" class="modal">
+    <video id="video" autoplay></video>
+    <canvas id="canvas"></canvas>
+    <div class="camera-actions">
+      <button onclick="capturePhoto()">Capture</button>
+      <button onclick="closeCamera()">Close</button>
+    </div>
+  </div>
+
+  <!-- Bars -->
+  <div class="bars">
+    <div class="bar food"
+         onmouseenter="showTooltip(event,'Food')"
+         onmouseleave="hideTooltip()"></div>
+
+    <div class="bar travel"
+         onmouseenter="showTooltip(event,'Travel')"
+         onmouseleave="hideTooltip()"></div>
+
+    <div class="bar shopping"
+         onmouseenter="showTooltip(event,'Shopping')"
+         onmouseleave="hideTooltip()"></div>
+
+    <div class="bar others"
+         onmouseenter="showTooltip(event,'Others')"
+         onmouseleave="hideTooltip()"></div>
+  </div>
+
+  <div id="tooltip" class="tooltip"></div>
+
+  <ul id="list"></ul>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+
+</html>
